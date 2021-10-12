@@ -19,6 +19,6 @@ contract OhGeez is ERC20, MerkleProof {
         bytes32 leaf = keccak256(abi.encodePacked(msg.sender));
         require(verify(merkleRoot, leaf, proof), "INVALID_PROOF");
         claimed[msg.sender] = true;
-        transfer(msg.sender, 1e18);
+        _transfer(address(this), msg.sender, 1e18);
     }
 }
